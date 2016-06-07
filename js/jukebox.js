@@ -15,30 +15,38 @@ function randomNumber() {
 }
 
 function menu() {
-  $('#menu').on('click', function(e) {
-    $('#menuOptions').html("You can play a song, pause a song, or view all the songs");
-  });
+  $('#menu').on('click', menuClick);
+}
+
+function menuClick(){
+  $('#menuOptions').html("You can play a song, pause a song, or view all the songs");
 }
 
 function play() {
-  $('#play').on('click', function(e) {
-    $('#songPlaying').html("now playing " + songToPlay + " by " + theArtist);
-    return "now playing " + songToPlay + " by " + theArtist;
-  });
+  $('#play').on('click', songClick);
+}
+
+function songClick(){
+  $('#songPlaying').html("now playing " + songToPlay + " by " + theArtist);
+  return "now playing " + songToPlay + " by " + theArtist;
 }
 
 function pause() {
-  $('#pause').on('click', function(e) {
-    $('#songPaused').html(songToPlay + " is paused");
-  });
+  $('#pause').on('click', pauseUpdate);
+}
+
+function pauseUpdate(){
+  $('#songPaused').html(songToPlay + " is paused");
 }
 
 function show() {
-  $('#show').on('click', function(e) {
-    var songs = "";
-    for (var key in jukeboxSongs) {
-      songs += jukeboxSongs[key] + " by " + key +  " is available to play. "
-    }
-    $('#showSongs').html(songs);
-  });
+  $('#show').on('click', showClick);
+}
+
+function showClick(){
+  var songs = "";
+  for (var key in jukeboxSongs) {
+    songs += jukeboxSongs[key] + " by " + key +  " is available to play. "
+  }
+  $('#showSongs').html(songs);
 }
